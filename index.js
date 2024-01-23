@@ -5,6 +5,7 @@ const app = express()
 
 app.use(express.json())
 app.use(cors())
+app.use(express.static('dist'))
 
 morgan.token('person', (req, res) => JSON.stringify(req.body))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :person'))
@@ -36,11 +37,11 @@ app.get('/', (req, res) => {
   res.send('<h1>Hello World</h1>')
 })
 
-app.get('/api/persons', (req, res) => {
+app.get('/persons', (req, res) => {
   res.json(persons)
 })
 
-app.get('/api/persons/:id', (req, res) => {
+app.get('/persons/:id', (req, res) => {
   const id = Number(req.params.id)
   const person = persons.find(person => person.id === id)
   if (person)
@@ -53,13 +54,13 @@ app.get('/info', (req, res) => {
   res.send(`<p>Phonebook has info for ${persons.length} person<p><p>${Date()}</p>`)
 })
 
-app.delete('/api/persons/:id', (req, res) => {
+app.delete('/persons/:id', (req, res) => {
   const id = Number(req.params.id)
   persons.filter(person => person.id !== id)
   res.status(204).end()
 })
 
-app.post('/api/persons', (req, res) => {
+app.post('/persons', (req, res) => {
   const person = req.body
   const id = Math.floor(Math.random() * 10000)
   person.id = id

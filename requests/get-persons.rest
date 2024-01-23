@@ -2,19 +2,19 @@ GET http://localhost:3001
 
 ###
 
-GET http://localhost:3001/api/persons
+GET http://localhost:3001/persons
 
 ###
 
-GET http://localhost:3001/api/persons/2
+GET http://localhost:3001/persons/2
 
 ###
 
-DELETE http://localhost:3001/api/persons/2
+DELETE http://localhost:3001/persons/2
 
 ###
 
-POST http://localhost:3001/api/persons
+POST http://localhost:3001/persons
 Content-Type: application/json
 
 {
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3001/api/persons
+POST http://localhost:3001/persons
 Content-Type: application/json
 
 {
@@ -34,7 +34,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3001/api/persons
+POST http://localhost:3001/persons
 Content-Type: application/json
 
 {
