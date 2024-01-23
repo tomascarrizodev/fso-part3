@@ -63,7 +63,7 @@ app.delete('/persons/:id', (req, res) => {
 app.post('/persons', (req, res) => {
   const person = req.body
   const id = Math.floor(Math.random() * 10000)
-  person.id = id
+  person.id = person.id || id
   let unique = true
   const condition = [...persons].forEach(pers => {
     if (pers.name === person.name) {
