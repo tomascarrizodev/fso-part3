@@ -10,7 +10,7 @@ app.use(express.static('dist'))
 morgan.token('person', (req, res) => JSON.stringify(req.body))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :person'))
 
-const persons = [
+let persons = [
   {
     "id": 1,
     "name": "Arto Hellas",
@@ -56,7 +56,7 @@ app.get('/info', (req, res) => {
 
 app.delete('/persons/:id', (req, res) => {
   const id = Number(req.params.id)
-  persons.filter(person => person.id !== id)
+  persons = persons.filter(person => person.id !== id)
   res.status(204).end()
 })
 
