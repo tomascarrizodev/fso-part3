@@ -6,11 +6,11 @@ GET http://localhost:3001/persons
 
 ###
 
-GET http://localhost:3001/persons/2
+GET http://localhost:3001/persons/65b027bd45a516475054e6af
 
 ###
 
-DELETE http://localhost:3001/persons/2
+DELETE http://localhost:3001/persons/65b027bd45a516475054e6af
 
 ###
 
@@ -18,8 +18,8 @@ POST http://localhost:3001/persons
 Content-Type: application/json
 
 {
-  "name": "Tomas Carrizo",
-  "number": "261 304 2443"
+  "name": "Mariano Molina",
+  "number": "261 566 2351"
 }
 
 ###
