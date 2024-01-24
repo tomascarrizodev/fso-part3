@@ -71,9 +71,9 @@ app.get('/info', async (req, res) => {
   }
 })
 
-app.delete('/persons/:id', (req, res) => {
+app.delete('/persons/:id', (req, res, next) => {
   Person.findByIdAndDelete(req.params.id)
-    .then(result => {
+    .then(() => {
       personsQuantity = personsQuantity - 1
       res.status(204).end()
     })
@@ -83,7 +83,7 @@ app.delete('/persons/:id', (req, res) => {
 app.post('/persons', (req, res, next) => {
   const body = req.body
 
-  if (body.name == false) {
+  if (body.name === undefined) {
     return res.status(400).json({ error: 'content missing' })
   }
 
@@ -102,7 +102,7 @@ app.post('/persons', (req, res, next) => {
     .catch(err => next(err))
 })
 
-app.put('/persons/:id', (req, res) => {
+app.put('/persons/:id', (req, res, next) => {
   const { name, number } = req.body
 
   Person.findByIdAndUpdate(req.params.id, { name, number }, { new: true, runValidators: true, context: 'query' })
