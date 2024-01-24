@@ -1,3 +1,7 @@
 /node_modules/
 mongodb_cluster0.txt
 .env
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
