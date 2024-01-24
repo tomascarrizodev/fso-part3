@@ -6,11 +6,15 @@ GET http://localhost:3001/persons
 
 ###
 
-GET http://localhost:3001/persons/65b027bd45a516475054e6af
+GET http://localhost:3001/info
 
 ###
 
-DELETE http://localhost:3001/persons/65b027bd45a516475054e6af
+GET http://localhost:3001/persons/65b05b444f6fa1cdeac7deaf
+
+###
+
+DELETE http://localhost:3001/persons/65b05dd17c55d203d2862b9c
 
 ###
 
@@ -18,7 +22,7 @@ POST http://localhost:3001/persons
 Content-Type: application/json
 
 {
-  "name": "Mariano Molina",
+  "name": "er",
   "number": "261 566 2351"
 }
 
@@ -40,4 +44,14 @@ Content-Type: application/json
 {
   "name": "",
   "number": ""
+}
+
+###
+
+PUT http://localhost:3001/persons/65b05b444f6fa1cdeac7deaf
+Content-Type: application/json
+
+{
+  "name": "a",
+  "number": "2"
 }
