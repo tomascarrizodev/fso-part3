@@ -97,7 +97,7 @@ app.post('/persons', async (req, res, next) => {
     .then(savedPerson => {
       personsQuantity++
       res.json(savedPerson)
-      mongoose.connection.close()
+      // mongoose.connection.close()
     })
     .catch(err => next(err))
 })
