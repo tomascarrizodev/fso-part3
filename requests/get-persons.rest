@@ -55,3 +55,13 @@ Content-Type: application/json
   "name": "a",
   "number": "2"
 }
+
+###
+
+PUT http://localhost:3001/persons/65b05b444f6fa1cdeac7deaf
+Content-Type: application/json
+
+{
+  "name": "aaa",
+  "number": "22-22222222"
+}
