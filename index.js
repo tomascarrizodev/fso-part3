@@ -49,8 +49,8 @@ app.get('/persons', (req, res) => {
   })
 })
 
-app.get('/persons/:id', (req, res, next) => {
-  Person.findById(req.params.id)
+app.get('/persons/:id', async (req, res, next) => {
+  await Person.findById(req.params.id)
     .then(person => {
       if (person) {
         res.json(person)
@@ -71,8 +71,8 @@ app.get('/info', async (req, res) => {
   }
 })
 
-app.delete('/persons/:id', (req, res, next) => {
-  Person.findByIdAndDelete(req.params.id)
+app.delete('/persons/:id', async (req, res, next) => {
+  await Person.findByIdAndDelete(req.params.id)
     .then(() => {
       personsQuantity = personsQuantity - 1
       res.status(204).end()
@@ -80,7 +80,7 @@ app.delete('/persons/:id', (req, res, next) => {
     .catch(err => next(err))
 })
 
-app.post('/persons', (req, res, next) => {
+app.post('/persons', async (req, res, next) => {
   const body = req.body
 
   if (body.name === undefined) {
@@ -93,7 +93,7 @@ app.post('/persons', (req, res, next) => {
     number: body.number,
   })
 
-  person.save()
+  await person.save()
     .then(savedPerson => {
       personsQuantity++
       res.json(savedPerson)
@@ -102,10 +102,10 @@ app.post('/persons', (req, res, next) => {
     .catch(err => next(err))
 })
 
-app.put('/persons/:id', (req, res, next) => {
+app.put('/persons/:id', async (req, res, next) => {
   const { name, number, id } = req.body
 
-  Person.findByIdAndUpdate(req.params.id, { name, number, id }, { new: true, runValidators: true, context: 'query' })
+  await Person.findByIdAndUpdate(req.params.id, { name, number, id }, { new: true, runValidators: true, context: 'query' })
     .then(updatedPerson => {
       res.json(updatedPerson)
     })
